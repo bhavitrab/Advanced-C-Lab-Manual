@@ -10,11 +10,36 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int data;
+    struct node *next;
+};
+
+struct node *head = NULL;
+
+void search(char data){
+    struct node *temp = head;
+    int pos = 0;
+    
+    while(temp != NULL) {
+        if(temp->data == data) {
+            printf("Element found at position %d\n", pos);        
+            }
+        temp = temp->next;
+        pos++;
+    }
+    printf("Element not found\n");
+}
+```
 
 Output:
 
-//paste your output here
+<img width="557" height="393" alt="image" src="https://github.com/user-attachments/assets/28400201-a8f1-457a-ae72-a35f2bf9854a" />
+
 
 
 
@@ -34,11 +59,39 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    char data;
+    struct node *next;
+};
+
+struct node *head = NULL;
+
+void insert(char data) {
+    struct node *newnode, *temp;
+    
+    newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data = data;
+    newnode->next = NULL;
+    
+    if(head == NULL) {
+        head = newnode;
+    } else {
+        temp = head;
+        while(temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newnode;
+    }
+}
+```
 
 Output:
 
-//paste your output here
+<img width="370" height="337" alt="image" src="https://github.com/user-attachments/assets/bd884202-f8da-4c51-ac58-4bfaa2e0e066" />
 
  
 Result:
@@ -58,11 +111,34 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    int data;
+    struct node *next;
+    struct node *prev;
+};
+
+struct node *head = NULL;
+
+void display() {
+    struct node *temp = head;
+    
+    printf("Doubly linked list: ");
+    while(temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+    printf("\n");
+}
+```
 
 Output:
 
-//paste your output here
+<img width="377" height="451" alt="image" src="https://github.com/user-attachments/assets/93142adb-95ec-4d66-bb0d-0669963be62c" />
+
 
 
 Result:
@@ -83,11 +159,43 @@ Algorithm:
  
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+    float data;
+    struct node *next;
+    struct node *prev;
+};
+
+struct node *head = NULL;
+
+static struct node* create_node(float data) {
+    struct node *newnode = (struct node *)malloc(sizeof(struct node));
+    newnode->data = data;
+    newnode->next = NULL;
+    newnode->prev = NULL;
+    return newnode;
+}
+void insert(float data) {
+    struct node *newnode = create_node(data);
+    if(head == NULL) {
+        head = newnode;
+        return;
+    }
+    struct node *temp = head;
+    while(temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newnode;
+    newnode->prev = temp;
+}
+```
 
 Output:
 
-//paste your output here
+<img width="455" height="597" alt="image" src="https://github.com/user-attachments/assets/2f7bbb5b-a9f7-4148-a16a-e2f04de7141e" />
 
 
 Result:
@@ -125,13 +233,43 @@ o	If the element is not found in any node, print a message indicating the elemen
 
 Program:
 
-//type your code here
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node{
+    char data; 
+    struct Node *next;
+}*head;
+void delete()
+{
+    if(head==NULL){
+        printf("List is empty\n");
+        return;
+    }
+    else if(head->next==NULL){
+        head=NULL;
+        free(head);
+        printf("Node deleted from the begining ...\n");
+    }
+    else{
+        struct Node *ptr;
+        ptr=head;
+        head=head->next;
+        free(ptr);
+        printf("Node deleted from the begining ...\n");
+    }
+}
+
+```
+
 
 Output:
 
-//paste your output here
 
 
+
+<img width="682" height="460" alt="image" src="https://github.com/user-attachments/assets/94e97890-1726-4d94-a560-36685729d80d" />
 
 
 
